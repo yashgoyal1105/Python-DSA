@@ -2,7 +2,7 @@ class Sort:
     def __init__(self):
         pass 
 
-    def bubble_sort(self, lst):
+    def bubble_sort(self, lst): #n^2
         """
         desc : sorts an input list using buuble sort
         parameter: self and lst->(list) 
@@ -14,7 +14,7 @@ class Sort:
                     lst[i], lst[j] = lst[j], lst[i]
         return lst
     
-    def selection_sort(self, lst):
+    def selection_sort(self, lst): #n^2 - selects lowest and swaps 
         """
         desc: sorting with selection sort algorithm
         parameter: self and lst->(list)
@@ -27,7 +27,7 @@ class Sort:
                     lst[j], lst[min_index] = lst[min_index], lst[j]
         return lst
 
-    def insertion_sort(self, lst):
+    def insertion_sort(self, lst): #n^2 - subsorting list
         """
         desc: sorting with insertion sort algorithm
         parameter: self and lst->(list)
@@ -42,7 +42,7 @@ class Sort:
             lst[previous + 1] = current
         return lst
     
-    def merge_sort(self, lst):
+    def merge_sort(self, lst): #nlogn - divide and conquer
         if len(lst) == 0:
             """
         desc: sorting with merge sort algorithm
@@ -57,7 +57,7 @@ class Sort:
         right_lst = self.merge_sort(lst[mid:])
         return self.merge(left_lst, right_lst)
 
-    def merge(self, left_lst, right_lst):
+    def merge(self, left_lst, right_lst): 
         """
         desc: helper for merge sort algorithm
         parameter: self ,left_lst->(left part of the list till middle), right_lst->(right part of the list from middle)
@@ -76,7 +76,7 @@ class Sort:
         sorted_lst += right_lst[j:]
         return sorted_lst
 
-    def quick_sort(self, lst):
+    def quick_sort(self, lst): #nlogn - pivot value
         """
         desc: sorting a list via quick sort algorithm
         parameter: self ,lst->(list)
@@ -90,6 +90,7 @@ class Sort:
         right = [x for x in lst if x > pivot] 
         return self.quick_sort(left) + middle + self.quick_sort(right)
                     
+
 if __name__ == "__main__":
     list1 = Sort()
     lst = [3, 7, 5, 9, 2, 4, 6, 1, 8]
@@ -100,9 +101,10 @@ if __name__ == "__main__":
     print("3. Insertion Sort")
     print("4. Merge Sort")
     print("5. Quick Sort")
+    print("0. Exit")
     
-    choice = int(input("Enter your choice (1-5): "))
-    
+    choice = int(input("Enter your choice (0-5): "))
+
     if choice == 1:
         sorted_lst = list1.bubble_sort(lst)
     elif choice == 2:
@@ -113,8 +115,10 @@ if __name__ == "__main__":
         sorted_lst = list1.merge_sort(lst)
     elif choice == 5:
         sorted_lst = list1.quick_sort(lst)
+    elif choice == 0:
+        exit()
     else:
         print("Invalid choice!")
         exit()
     
-    print("Sorted list:", sorted_lst)
+    print("Sorted list: ", sorted_lst)
