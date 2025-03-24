@@ -89,13 +89,17 @@ class Sort:
         middle = [x for x in lst if x == pivot]
         right = [x for x in lst if x > pivot] 
         return self.quick_sort(left) + middle + self.quick_sort(right)
-                    
 
-if __name__ == "__main__":
+def main():
+    """
+    desc: stores objects and the script is run
+    parameter: None
+    return: sorting Menu 
+    """
     list1 = Sort()
     lst = [3, 7, 5, 9, 2, 4, 6, 1, 8]
     
-    print("Choose sorting algorithm:")
+    print("Choose sorting algorithm: ")
     print("1. Bubble Sort")
     print("2. Selection Sort")
     print("3. Insertion Sort")
@@ -114,11 +118,15 @@ if __name__ == "__main__":
     elif choice == 4:
         sorted_lst = list1.merge_sort(lst)
     elif choice == 5:
-        sorted_lst = list1.quick_sort(lst)
+        sorted_lst = list1.quick_sort(lst) 
     elif choice == 0:
         exit()
     else:
         print("Invalid choice!")
         exit()
     
-    print("Sorted list: ", sorted_lst)
+    print("Sorted list: ", sorted_lst)   
+
+
+if __name__ == "__main__":
+    main() 
